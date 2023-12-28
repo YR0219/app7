@@ -23,7 +23,7 @@ best_threshold = joblib.load('best_threshold.pkl')
 clients_data = pd.read_csv('X_test_select.csv')
 
 # Initialisation de l'expliqueur SHAP
-explainer = shap.TreeExplainer(model)
+explainer = shap.TreeExplainer(model, n_jobs=1)
 
 # Initialisation de l'application Dash
 app = dash.Dash(__name__)
@@ -213,5 +213,5 @@ def get_acceptance():
 
 # Exécution de l'application
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(port=8000, debug=True)
 
